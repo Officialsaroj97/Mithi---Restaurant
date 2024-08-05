@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="greeting.css">
+  <link rel="icon" type="image/x-icon" href="/images/mithila/Mithi logo.svg">
+  <script>
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split('&').forEach(param => {
+        const [key, value] = param.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value);
+      });
+      return params;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = getQueryParams();
+      document.getElementById('food-name').textContent = params.foodName;
+      document.getElementById('food-image').src = params.foodImage;
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="/images/mithila/cooking-min.gif" alt="Chefs cooking gifs" class="food-image">
+    <h1>Thank You for Your Order!</h1>
+    <p>Your food will be delivered in just 15 minutes.</p>
+  </div>
+</body>
+</html>

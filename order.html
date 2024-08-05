@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Page</title>
+  <link rel="stylesheet" href="order.css">
+  <link rel="icon" type="image/x-icon" href="/images/mithila/Mithi logo.svg">
+  <script>
+    function placeOrder(foodName, foodImage) {
+      const url = `greeting.html?foodName=${encodeURIComponent(foodName)}&foodImage=${encodeURIComponent(foodImage)}`;
+      window.location.href = url;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Place Your Order</h1>
+  </header>
+
+  <div class="order-details">
+    <h2>Order Summary</h2>
+    <div class="product-details">
+      <p><strong>Product:</strong> <span id="productName"></span></p>
+      <p><strong>Price:</strong> $<span id="productPrice"></span></p>
+      <p><strong>Quantity:</strong> <span id="productQuantity"></span></p>
+    </div>
+    <div class="order-actions">
+      <a href="#" class="place-order-button" onclick="placeOrder()">Place Order</a>
+      <a href="/menu-item.html" class="add-more-button">Add More</a>
+    </div>
+  </div>
+  <script>
+    // Retrieve and display product details from URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get('product');
+    const productPrice = urlParams.get('price');
+    const productQuantity = urlParams.get('quantity');
+
+    // Update DOM with product details
+    document.getElementById('productName').textContent = productName;
+    document.getElementById('productPrice').textContent = productPrice;
+    document.getElementById('productQuantity').textContent = productQuantity;
+  </script>
+  <script>
+    function placeOrder() {
+      // Redirect to the greeting page
+      window.location.href = 'greeting.html';
+    }
+  </script>
+  </body>
+</html>
